@@ -1,12 +1,9 @@
 package com.example.Controllers;
 
 
-import com.example.Model.City;
 import com.example.Model.Nation;
 import com.example.Service.NationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -30,6 +27,12 @@ public class NationController {
         modelAndView.addObject("nation",nations);
         return modelAndView;
     }
+    @GetMapping("/create-nation")
+    public ModelAndView showCreateForm(){
+        ModelAndView modelAndView = new ModelAndView("nation/create");
+        modelAndView.addObject("nation", new Nation());
+        return modelAndView;
+    }
     @PostMapping("/create-nation")
     public ModelAndView saveNation(@Validated @ModelAttribute("nation") Nation nation, BindingResult bindingResult){
         if (bindingResult.hasFieldErrors()) {
@@ -43,12 +46,7 @@ public class NationController {
         modelAndView.addObject("message", "OKE BẠN NHÉ");
         return modelAndView;
     }
-    @GetMapping("/create-nation")
-    public ModelAndView showCreateForm(){
-        ModelAndView modelAndView = new ModelAndView("nation/create");
-        modelAndView.addObject("nation", new Nation());
-        return modelAndView;
-    }
+
     @GetMapping("/edit-nation/{ID}")
     public ModelAndView updateNation(@PathVariable Long ID) {
         Optional<Nation> nation = nationService.findById(ID);

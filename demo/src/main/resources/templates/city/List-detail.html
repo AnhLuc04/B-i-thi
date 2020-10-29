@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -27,7 +26,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr th:each="city: ${city}">
+    <tr th:object="city = ${city}">
         <th scope="row"><a th:text="${city.ID}"></a></th>
         <th><a th:text="${city.nameCity}"></a></th>
         <th><a th:text="${city.nation?.nameNation}"></a></th>
@@ -35,8 +34,8 @@
         <th><a th:text="${city.population}"></a></th>
         <th><a th:text="${city.GDP}"></a></th>
         <th><a th:text="${city.description}"></a></th>
-        <th><a th:href="@{/edit-city/__${city.ID}__ }">Chỉnh Sửa</a></th>
-        <th><a th:href="@{/delete-city/__${city.ID}__ }">Xóa</a></th>
+<!--        <th><a th:href="@{/edit-city/__${city.ID}__ }">Edit</a></th>-->
+<!--        <th><a th:href="@{/delete-city/__${city.ID}__ }">Delete</a></th>-->
     </tr>
     </tbody>
 </table>

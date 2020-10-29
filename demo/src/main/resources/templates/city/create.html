@@ -17,27 +17,27 @@
 <table class="table">
     <tr>
         <th scope="col">Tên Thành Phố</th>
-        <th scope="col"><input type="text" th:field="*{nameCity}"/></th>
+        <th scope="col"><input type="text" th:field="*{nameCity}"minlength="3" maxlength="12"/></th>
         <th scope="col"  th:if="${#fields.hasErrors('nameCity')}" th:errors="*{nameCity}"></th>
     </tr>
     <tr>
         <th scope="col" >Diện Tích</th>
-        <th scope="col"><input type="text" th:field="*{acreage}"/></th>
+        <th scope="col"><input type="text" th:field="*{acreage}"minlength="3" maxlength="12"/></th>
         <th scope="col" th:if="${#fields.hasErrors('acreage')}" th:errors="*{acreage}"></th>
     </tr>
     <tr>
         <th scope="col">Dân số</th>
-        <th scope="col"><input type="text" th:field="*{population}"/></th>
+        <th scope="col"><input type="text" th:field="*{population}"minlength="3" maxlength="12"/></th>
         <th scope="col" th:if="${#fields.hasErrors('population')}" th:errors="*{population}"></th>
     </tr>
     <tr>
         <th scope="col">GDP</th>
-        <th scope="col"><input type="text" th:field="*{GDP}"/></th>
+        <th scope="col"><input type="text" th:field="*{GDP}"minlength="3" maxlength="12"/></th>
         <th scope="col" th:if="${#fields.hasErrors('GDP')}" th:errors="*{GDP}"></th>
     </tr>
     <tr>
         <th scope="col">Mô tả </th>
-        <th scope="col"><input type="text" th:field="*{description}"/></th>
+        <th scope="col"><input type="text" th:field="*{description}"minlength="3" maxlength="12"/></th>
     </tr>
     <tr>
         <th scope="col">QUỐC Gia </th>

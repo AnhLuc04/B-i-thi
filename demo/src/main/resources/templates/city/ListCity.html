@@ -21,6 +21,7 @@
 <body>
 <table class="table">
     <thead>
+    <th><a href="http://localhost:8080/create-city">Create</a></th>
     <tr>
         <th scope="col"></th>
         <th scope="col">Tên Thành Phố</th>
@@ -33,9 +34,8 @@
         <th scope="row"><a th:text="${city.ID}"></a></th>
         <th><a th:text="${city.nameCity}" th:href="@{/city/__${city.ID}__}"></a></th>
         <th><a th:text="${city.nation?.nameNation}"></a></th>
-        <th><a th:href="@{/edit-city/__${city.ID}__ }">Chỉnh Sửa</a></th>
-        <th><a th:href="@{/delete-city/__${city.ID}__ }">Xóa</a></th>
-        <th><a href="http://localhost:8080/create-city">Thêm</a></th>
+        <th><a th:href="@{/edit-city/__${city.ID}__ }">Edit</a></th>
+        <th><a th:href="@{/delete-city/__${city.ID}__ }">Delete</a></th>
     </tr>
     </tbody>
 </table>

@@ -1,30 +1,24 @@
 package com.example.Model;
 
 
-import org.aspectj.bridge.IMessage;//
-import org.aspectj.bridge.Message;//
-
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 @Entity
-@Table(name = "City") //
 public class City implements Cloneable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
-    @Size(min =2, max =50,message = "Xin Mời Nhập Lại")
+    @NotBlank
+    @Size(min = 2, max = 50, message = "Xin Mời Nhập Lại")
     private String nameCity;
-
-    @Min(value = 0,message = "Xin Mời Nhập Lại")
+    @Min(value = 0, message = "Xin Mời Nhập Lại")
     private int acreage;
-    @Min(value = 0,message = "Xin Mời Nhập Lại")
+    @Min(value = 0, message = "Xin Mời Nhập Lại")
     private int population;
-    @Min(value = 0,message = "Xin Mời Nhập Lại")
+    @Min(value = 1, message = "Xin Mời Nhập Lại")
     private int GDP;
-    @NotNull
+    @NotEmpty(message = "Xin Mời Nhập Lai")
     private String description;
     @ManyToOne
     @JoinColumn(name = "nation_Id")
@@ -52,7 +46,7 @@ public class City implements Cloneable {
     }
 
     public void setAcreage(int acreage) {
-        acreage = acreage;
+        this.acreage = acreage;
     }
 
     public int getPopulation() {
@@ -60,7 +54,7 @@ public class City implements Cloneable {
     }
 
     public void setPopulation(int population) {
-        population = population;
+        this.population = population;
     }
 
     public int getGDP() {

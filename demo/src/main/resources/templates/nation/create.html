@@ -16,14 +16,9 @@
     <table class="table">
         <tr>
             <th scope="col">Tên Quốc Gia</th>
-            <th scope="col"><input type="text" th:field="*{nameNation}"/></th>
-            <th scope="col" th:errors="*{nameNation}"></th>
+            <th scope="col"><input  th:field="*{nameNation}"type="text" minlength="3" maxlength="12"></th>
+<!--            <th scope="col" th:errors="*{nameNation}"></th>-->
         </tr>
-<!--        <tr>-->
-<!--            <th scope="col" >Diện Tích</th>-->
-<!--            <th scope="col"><input type="text" th:field="*{acreage}"/></th>-->
-<!--            <th scope="col" th:if="${#fields.hasErrors('acreage')}" th:errors="*{acreage}"></th>-->
-<!--        </tr>-->
         <tr>
             <th><input type="submit" value="Create CiTy"></th>
         </tr>

@@ -27,6 +27,13 @@ public class CityController {
         return nationService.findAll();
     }
 
+
+    @GetMapping("sreach")
+    public  ModelAndView sreach (Optional<String>s){
+        ModelAndView modelAndView = new ModelAndView("city/ListCity");
+        return modelAndView;
+    }
+
     @GetMapping("city")
     public ModelAndView showList( Pageable pageInfo) {
         ModelAndView modelAndView = new ModelAndView("city/ListCity");
@@ -35,7 +42,7 @@ public class CityController {
         return modelAndView;
     }
     @PostMapping("/create-city")
-    public ModelAndView saveCity(@Validated @ModelAttribute("city")City city, BindingResult bindingResult){
+    public ModelAndView saveCity(@Validated @ModelAttribute("city")City city, BindingResult bindingResult,@RequestParam int acreage){
         if (bindingResult.hasFieldErrors()) {
             ModelAndView modelAndView = new ModelAndView("city/create");
             modelAndView.addObject("message", "Cú pháp sai bạn nhé");
@@ -66,21 +73,21 @@ public class CityController {
         }
     }
         @PostMapping("/edit-city")
-    public ModelAndView updateCity(@Validated @ModelAttribute("city") City city,BindingResult bindingResult){
+    public ModelAndView updateCity(@Validated @ModelAttribute("city") City city,BindingResult bindingResult,Pageable pageInfo){
             if (bindingResult.hasFieldErrors()) {
                 ModelAndView modelAndView = new ModelAndView("city/edit");
                 modelAndView.addObject("message", "Cú pháp sai bạn nhé");
                 return modelAndView;
             }
             cityService.save(city);
-        ModelAndView modelAndView = new ModelAndView("city/edit");
-        Iterable<City> citys= cityService.findAll();;
+        ModelAndView modelAndView = new ModelAndView("city/ListCity");
+
+            Page<City> citys = cityService.findAll(pageInfo);
+
         modelAndView.addObject("city", citys);
         modelAndView.addObject("message", "OKE BẠN NHÉ");
         return modelAndView;
     }
-
-
     @GetMapping("/delete-city/{ID}")
     public ModelAndView showDeleteForm(@PathVariable Long ID,Pageable pageable){
         cityService.delete(ID);

@@ -8,8 +8,6 @@ import java.util.Optional;
 public interface NationService {
     List<Nation> findAll();
 
-//    Province findOne(Long id);
-
     Optional<Nation> findById(Long id);
 
     Nation save(Nation nation);

@@ -1,8 +1,6 @@
 package com.example.repository;
 
 import com.example.Model.City;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 
